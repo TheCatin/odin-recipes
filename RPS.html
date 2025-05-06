@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <h1>OPEN CONSOLE</h1>
+
+  <script>
+console.log("hello world");
+
+function getComputerChoice() {
+  let number = Math.random();
+  if (number < 0.33) {
+    return "rock";
+  } else if (number < 0.66) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+}
+
+function getHumanChoice() {
+  let input = prompt("Choose rock, paper, or scissors:");
+  return input;
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+  let human = humanChoice.toLowerCase();
+  let computer = computerChoice;
+  if (human === computer) {
+    console.log("it's a tie!");
+  } else if (
+    (human === "rock" && computer === "scissors") ||
+    (human === "scissors" && computer === "paper") ||
+    (human === "paper" && computer === "rock")
+  ) {
+    console.log("you win! " + human + " beats " + computer);
+    humanScore++;
+  } else {
+    console.log("you lose! " + computer + " beats " + human);
+    computerScore++;
+  }
+}
+
+// five rounds
+function playGame() {
+  humanScore = 0;
+  computerScore = 0;
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+
+  console.log("final score: human " + humanScore + " - computer " + computerScore);
+  if (humanScore > computerScore) {
+    console.log("you won the game!");
+  } else if (computerScore > humanScore) {
+    console.log("Computer won the game!");
+  } else {
+    console.log("it's a draw!");
+  }
+}
+
+playGame();
+
+  </script>
+
+</body>
+</html>
